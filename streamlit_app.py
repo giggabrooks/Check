@@ -7,6 +7,20 @@ import os
 import sys
 import asyncio
 import warnings
+import subprocess
+
+# Ensure Playwright browsers are installed
+try:
+    from playwright.sync_api import sync_playwright
+    # Test if browsers are available
+    try:
+        with sync_playwright() as p:
+            p.chromium.launch().close()
+    except:
+        st.warning("Installing Playwright browsers... (this happens only once)")
+        subprocess.run([sys.executable, "-m", "playwright", "install", "chromium"], check=True)
+except Exception as e:
+    st.error(f"Playwright setup error: {e}")
 
 # Fix for Playwright on Windows with Python 3.14
 if sys.platform == "win32":

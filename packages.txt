@@ -1,1 +1,9 @@
+chromium-browser
 libgconf-2-4
+libnspr4
+libnss3
+libx11-6
+libxss1
+fonts-liberation
+xdg-utils
+wget
